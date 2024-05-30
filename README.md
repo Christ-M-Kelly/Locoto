@@ -1,3 +1,2 @@
 # Locoto
-Nous allons maintenant débuter notre projet
-
+Nous allons maintenant commencer notre projet
