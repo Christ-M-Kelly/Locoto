@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Voitures - Locoto</title>
-    <link rel="stylesheet" href="Voitures.css"> <!-- Assurez-vous que le fichier CSS est correctement nommé et accessible -->
+    <link rel="stylesheet" href="Voitures.css"> 
 </head>
 <body>
     <header>
@@ -24,8 +24,12 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Voitures Disponibles</h1> <!-- Déplacé en dehors de la table -->
-                <table>
+                <h1>Voitures de l'agence</h1> 
+             </div>
+         </section>
+
+               <section class="table-container">
+                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -33,14 +37,20 @@
                             <th>Modèle</th>
                             <th>Catégorie</th>
                             <th>Immatriculation</th>
-                            <th>Actions</th>
+                            <th>Disponibilité</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <div class="actions">
+                <button class="action-btn" onclick="window.location.href='ajouter.php'">Ajouter</button>
+                <button class="action-btn" onclick="window.location.href='modifier.php'">Modifier</button>
+                <button class="action-btn" onclick="window.location.href='supprimer.php'">Supprimer</button>
+            
+    
                         <?php
                         // Connexion à la base de données
                         $servername = "localhost";
-                        $username = "Keliane";  
+                        $username = "root";  
                         $password = "";     
                         $dbname = "public";
 
@@ -50,22 +60,20 @@
                             die("Connexion échouée: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT * FROM voiture";
+                        $sql = "SELECT voiture.id_voiture, marque.libelle as Marque ,modele.libelle as Modèle,categorie.libelle as Catégorie, immatriculation
+                                FROM voiture, marque, modele, categorie";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row["id"] . "</td>";
-                                echo "<td>" . $row["marque"] . "</td>";
-                                echo "<td>" . $row["modele"] . "</td>";
-                                echo "<td>" . $row["categorie"] . "</td>";
+                                echo "<td>" . $row["id_voiture"] . "</td>";
+                                echo "<td>" . $row["Marque"] . "</td>";
+                                echo "<td>" . $row["Modèle"] . "</td>";
+                                echo "<td>" . $row["Catégorie"] . "</td>";
                                 echo "<td>" . $row["immatriculation"] . "</td>";
                                 echo "<td>";
-                                echo "<a href='modifier_voiture.php?id=" . $row["id"] . "'>Modifier</a> | ";
-                                echo "<a href='supprimer_voiture.php?id=" . $row["id"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cette voiture ?\");'>Supprimer</a>";
-                                echo "</td>";
-                                echo "</tr>";
+                                
                             }
                         } else {
                             echo "<tr><td colspan='6'>Aucune voiture trouvée</td></tr>";

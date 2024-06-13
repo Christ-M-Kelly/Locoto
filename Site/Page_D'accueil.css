@@ -1,17 +1,30 @@
-/* styles.css */
+:root {
+    --primary-color: #433e3bc4;
+    --secondary-color: #f2f2f2;
+    --font-family: Arial, sans-serif;
+    --font-color: white;
+    --link-color: blue;
+    --link-hover-color: darkblue;
+    --border-color: #ddd;
+}
+
+
 body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-family);
+    color: var(--font-color);
 }
 
 header {
     position: fixed;
     width: 100%;
     top: 0;
-    background: #433e3b;
-    color: white;
+    background: var(--primary-color);
+    color: var(--font-color);
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -31,13 +44,21 @@ header {
 }
 
 .navbar nav ul li {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .navbar nav ul li a {
-    color: white;
+    color: var(--font-color);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+    color: var(--primary-color);
+    background-color: var(--font-color);
+    border-radius: 5px;
 }
 
 .hero {
@@ -66,7 +87,7 @@ header {
 }
 
 footer {
-    background-color: #433e3b;
+    background-color: #433e3bc4;
     color: white;
     text-align: center;
     padding: 10px 0;
