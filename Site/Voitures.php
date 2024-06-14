@@ -32,11 +32,11 @@
                  <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Marque</th>
                             <th>Modèle</th>
                             <th>Catégorie</th>
                             <th>Immatriculation</th>
+                            <th>Image</th>
                             <th>Disponibilité</th>
                         </tr>
                     </thead>
@@ -52,7 +52,7 @@
                         $servername = "localhost";
                         $username = "root";  
                         $password = "";     
-                        $dbname = "public";
+                        $dbname = "locauto";
 
                         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -60,18 +60,18 @@
                             die("Connexion échouée: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT voiture.id_voiture, marque.libelle as Marque ,modele.libelle as Modèle,categorie.libelle as Catégorie, immatriculation
-                                FROM voiture, marque, modele, categorie";
+                        $sql = "SELECT *
+                                FROM voitures";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row["id_voiture"] . "</td>";
-                                echo "<td>" . $row["Marque"] . "</td>";
-                                echo "<td>" . $row["Modèle"] . "</td>";
-                                echo "<td>" . $row["Catégorie"] . "</td>";
+                                echo "<td>" . $row["id_categorie"] . "</td>";
+                                echo "<td>" . $row["modele"] . "</td>";
+                                echo "<td>" . $row["marque"] . "</td>";
                                 echo "<td>" . $row["immatriculation"] . "</td>";
+                                echo '<img src="image/' . htmlspecialchars($ligne["image"]) . '" alt="image de la voiture">';
                                 echo "<td>";
                                 
                             }
