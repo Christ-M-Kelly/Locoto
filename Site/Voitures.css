@@ -186,3 +186,9 @@ footer {
     margin-top: auto;
     position: relative;
 }
+.car-image {
+    width: 200px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

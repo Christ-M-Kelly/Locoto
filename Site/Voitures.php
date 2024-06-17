@@ -71,7 +71,7 @@
                                 echo "<td>" . $row["modele"] . "</td>";
                                 echo "<td>" . $row["marque"] . "</td>";
                                 echo "<td>" . $row["immatriculation"] . "</td>";
-                                echo '<img src="image/' . htmlspecialchars($ligne["image"]) . '" alt="image de la voiture">';
+                                echo "<td><img src='image/" . htmlspecialchars($row["image"]) . "' alt='Image de la voiture' class='car-image'></td>";
                                 echo "<td>";
                                 
                             }
