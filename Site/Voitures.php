@@ -32,6 +32,7 @@
                  <table>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Marque</th>
                             <th>Modèle</th>
                             <th>Catégorie</th>
@@ -52,7 +53,7 @@
                         $servername = "localhost";
                         $username = "root";  
                         $password = "";     
-                        $dbname = "locauto";
+                        $dbname = "public";
 
                         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -60,16 +61,18 @@
                             die("Connexion échouée: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT *
-                                FROM voitures";
+                        $sql = "SELECT m.libelle, m.id_categorie, m.image, v.id_modele
+                                FROM modele m
+                                JOIN  v.id_modele ON m.libelle = v.id_modele";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 echo "<tr>";
+                                echo "<td>" . $row["id_voiture"] . "</td>";
                                 echo "<td>" . $row["id_categorie"] . "</td>";
-                                echo "<td>" . $row["modele"] . "</td>";
-                                echo "<td>" . $row["marque"] . "</td>";
+                                echo "<td>" . $row["Modèle"] . "</td>";
+                                echo "<td>" . $row["Marque"] . "</td>";
                                 echo "<td>" . $row["immatriculation"] . "</td>";
                                 echo "<td><img src='image/" . htmlspecialchars($row["image"]) . "' alt='Image de la voiture' class='car-image'></td>";
                                 echo "<td>";
