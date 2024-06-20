@@ -1,3 +1,4 @@
+<?php include 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -48,37 +49,26 @@
             
     
                         <?php
-                        // Connexion à la base de données
-                        $servername = "localhost";
-                        $username = "root";  
-                        $password = "";     
-                        $dbname = "public";
-
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conn->connect_error) {
-                            die("Connexion échouée: " . $conn->connect_error);
-                        }
-
-                        $sql = "SELECT id_client, nom , prenom , adresse , libelle
-                                FROM client, type_de_client";
+                        $sql = "SELECT * FROM clients";
                         $result = $conn->query($sql);
-
+                 
                         if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["id_client"] . "</td>";
-                                echo "<td>" . $row["nom"] . "</td>";
-                                echo "<td>" . $row["prenom"] . "</td>";
-                                echo "<td>" . $row["adresse"] . "</td>";
-                                echo "<td>" . $row["libelle"] . "</td>";
-                                echo "<td>";
-                                
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>
+                <td>{$row['id_client']}</td>
+                <td>{$row['nom']}</td>
+                <td>{$row['prenom']}</td>
+                <td>{$row['adresse']}</td>
+                <td><img src='images/{$row['photo']}' alt='Photo du client' width='100' class='clickable'></td>
+                <td>
+                <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
+                <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
+                </td>
+                </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='6'>Aucune voiture trouvée</td></tr>";
+                            echo "<tr><td colspan='6'>Aucun client trouvé</td></tr>";
                         }
-                        $conn->close();
                         ?>
                     </tbody>
                 </table>

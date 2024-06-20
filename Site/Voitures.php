@@ -1,3 +1,4 @@
+<?php include 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,13 +33,12 @@
                  <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Marque</th>
-                            <th>Modèle</th>
-                            <th>Catégorie</th>
-                            <th>Immatriculation</th>
-                            <th>Image</th>
-                            <th>Disponibilité</th>
+                        <th>Immatriculation</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th>Catégorie</th>
+                        <th>Image de la voiture</th>
+                        <th>Disponibilité</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -49,39 +49,28 @@
             
     
                         <?php
-                        // Connexion à la base de données
-                        $servername = "localhost";
-                        $username = "root";  
-                        $password = "";     
-                        $dbname = "public";
-
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conn->connect_error) {
-                            die("Connexion échouée: " . $conn->connect_error);
-                        }
-
-                        $sql = "SELECT m.libelle, m.id_categorie, m.image, v.id_modele
-                                FROM modele m
-                                JOIN  v.id_modele ON m.libelle = v.id_modele";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["id_voiture"] . "</td>";
-                                echo "<td>" . $row["id_categorie"] . "</td>";
-                                echo "<td>" . $row["Modèle"] . "</td>";
-                                echo "<td>" . $row["Marque"] . "</td>";
-                                echo "<td>" . $row["immatriculation"] . "</td>";
-                                echo "<td><img src='image/" . htmlspecialchars($row["image"]) . "' alt='Image de la voiture' class='car-image'></td>";
-                                echo "<td>";
-                                
-                            }
-                        } else {
-                            echo "<tr><td colspan='6'>Aucune voiture trouvée</td></tr>";
-                        }
-                        $conn->close();
+                        $sql = "SELECT v.immatriculation, v.marque, v.modele, c.categorie, v.image
+                        FROM voitures v
+                        JOIN categories c ON v.id_categorie = c.id_categorie";
+                $result = $conn->query($sql);
+        
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                                <td>{$row['immatriculation']}</td>
+                                <td>{$row['marque']}</td>
+                                <td>{$row['modele']}</td>
+                                <td>{$row['categorie']}</td>
+                                <td><img src='images/{$row['image']}' alt='Image de la voiture' width='100' class='clickable'></td>
+                                <td>
+                                    <a href='modifier_voiture.php?id={$row['immatriculation']}'>Modifier</a>
+                                    <a href='supprimer_voiture.php?id={$row['immatriculation']}'>Supprimer</a>
+                                </td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='6'>Aucune voiture trouvée</td></tr>";
+                }
                         ?>
                     </tbody>
                 </table>
