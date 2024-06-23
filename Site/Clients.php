@@ -48,7 +48,9 @@
                         <button class="action-btn" onclick="window.location.href='supp_client.php'">Supprimer</button>
             
                         <?php
-                        $sql = "SELECT * FROM clients";
+                        $sql = "SELECT * , t.type_client
+                        FROM clients as c
+                        JOIN typeclient t ON c.id_type_client = c.id_type_client";
                         $result = $conn->query($sql);
                  
                         if ($result->num_rows > 0) {
@@ -58,10 +60,9 @@
                 <td>{$row['nom']}</td>
                 <td>{$row['prenom']}</td>
                 <td>{$row['adresse']}</td>
-                <td><img src='images/{$row['photo']}' alt='Photo du client' width='100' class='clickable'></td>
+                <td>{$row['type_client']}</td>
                 <td>
-                <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
-                <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
+                
                 </td>
                 </tr>";
                             }
