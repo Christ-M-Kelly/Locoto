@@ -1,93 +1,50 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Voitures - Locoto</title>
-    <link rel="stylesheet" href="Location.css"> 
-</head>
-<body>
-    <header>
-        <div class="navbar">
-            <div class="logo">Locoto</div>
-            <nav>
-                <ul>
-                    <li><a href="Page_d'accueil.php">Accueil</a></li>
-                    <li><a href="Clients.php">Clients</a></li>
-                    <li><a href="Voitures.php">Locations</a></li>
-                    <li><a href="Connexion.php">Connexion</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<?php include 'config.php'; ?>
+<?php include 'templates/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="Location.css">
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Gestion des locations</h1> 
-             </div>
-         </section>
+<div class="button-container">
+    <a href="ajouter_location.php" class="button">Ajouter une Location</a>
+</div>
 
-               <section class="table-container">
-                 <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nom du client</th>
-                            <th>Immatriculation de la voiture</th>
-                            <th>Date de début</th>
-                            <th>Date de Fin</th>
-                            <th>Statut</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <div class="actions">
-                <button class="action-btn" onclick="window.location.href='Ajouter_location.php'">Ajouter</button>
-                <button class="action-btn" onclick="window.location.href='modifier.php'">Modifier</button>
-                <button class="action-btn" onclick="window.location.href='supprimer.php'">Supprimer</button>
-            
-    
-                        <?php
-                        // Connexion à la base de données
-                        $servername = "localhost";
-                        $username = "root";  
-                        $password = "";     
-                        $dbname = "public";
+<h2>Gestion des Locations</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Client</th>
+            <th>Voiture</th>
+            <th>Date Début</th>
+            <th>Date Fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $sql = "SELECT l.id_louer, c.nom, c.prenom, v.marque, v.modele, l.date_debut, l.date_fin
+                FROM louer l
+                JOIN clients c ON l.id_client = c.id_client
+                JOIN voitures v ON l.immatriculation = v.immatriculation";
+        $result = $conn->query($sql);
 
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['id_louer']}</td>
+                        <td>{$row['nom']} {$row['prenom']}</td>
+                        <td>{$row['marque']} {$row['modele']}</td>
+                        <td>{$row['date_debut']}</td>
+                        <td>{$row['date_fin']}</td>
+                        <td>
+                            <a href='modifier_location.php?id={$row['id_louer']}'>Modifier</a>
+                            <a href='supprimer_location.php?id={$row['id_louer']}'>Supprimer</a>
+                        </td>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6'>Aucune location trouvée</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
 
-                        if ($conn->connect_error) {
-                            die("Connexion échouée: " . $conn->connect_error);
-                        }
-
-                        $sql = "SELECT id_location, nom, immatriculation, date_debut, date_fin
-                                FROM voiture, client, location ";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            while($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["id_location"] . "</td>";
-                                echo "<td>" . $row["nom"] . "</td>";
-                                echo "<td>" . $row["immatriculation"] . "</td>";
-                                echo "<td>" . $row["date_debut"] . "</td>";
-                                echo "<td>" . $row["date_fin"] . "</td>";
-                                echo "<td>";
-                                
-                            }
-                        } else {
-                            echo "<tr><td colspan='6'>Aucune location trouvée</td></tr>";
-                        }
-                        $conn->close();
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; Locoto : Une aventure extraordinaire.</p>
-    </footer>
-</body>
-</html>
+<?php include 'templates/footer.php'; ?>
