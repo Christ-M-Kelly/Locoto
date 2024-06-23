@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Locations - Locoto</title>
+    <title>Gestion des clients - Locoto</title>
     <link rel="stylesheet" href="Ajouter.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <form class="rental-form" action="ajouter_client.php" method="post" enctype="multipart/form-data">
-                <h1>Formulaire de gestion des Locations</h1>
+                <h1>Formulaire de gestion des clients</h1>
                 <label for="nom">Nom:</label>
                 <input type="text" id="nom" name="nom" required>
                 
