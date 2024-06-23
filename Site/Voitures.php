@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                     <div class="actions">
-                <button class="action-btn" onclick="window.location.href='Ajouter.php'">Ajouter</button>
+                <button class="action-btn" onclick="window.location.href='Ajouter.php'">ajouter_voiture.php</button>
                 <button class="action-btn" onclick="window.location.href='modifier.php'">Modifier</button>
                 <button class="action-btn" onclick="window.location.href='supprimer.php'">Supprimer</button>
             
