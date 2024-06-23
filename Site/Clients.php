@@ -44,8 +44,8 @@
                     <tbody>
                     <div class="actions">
                         <button class="action-btn" onclick="window.location.href='ajouter_client.php'">ajouter_clients.php</button>
-                        <button class="action-btn" onclick="window.location.href='modifier.php'">Modifier</button>
-                        <button class="action-btn" onclick="window.location.href='supprimer.php'">Supprimer</button>
+                        <button class="action-btn" onclick="window.location.href='modifier_client.php'">Modifier</button>
+                        <button class="action-btn" onclick="window.location.href='supp_client.php'">Supprimer</button>
             
                         <?php
                         $sql = "SELECT * FROM clients";
