@@ -48,9 +48,9 @@
                         <button class="action-btn" onclick="window.location.href='supp_client.php'">Supprimer</button>
             
                         <?php
-                        $sql = "SELECT * , t.type_client
-                        FROM clients as c
-                        JOIN typeclient t ON c.id_type_client = c.id_type_client";
+                        $sql = "SELECT c.id_client, c.nom, c.prenom, c.adresse, t.type_client
+                        FROM clients c
+                        JOIN typesclient t ON c.id_type_client = t.id_type_client";
                         $result = $conn->query($sql);
                  
                         if ($result->num_rows > 0) {

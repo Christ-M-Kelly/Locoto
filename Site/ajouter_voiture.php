@@ -44,7 +44,7 @@
                 <input type="file" id="image" name="image" accept="image/*" required>
                 
                 <div class="form-actions">
-                    <button type="submit" class="action-btn">Ajouter</button>
+                    <button type="submit" class="action-btn" name="submit">Ajouter</button>
                     <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Voitures.php'">Annuler</button>
                 </div>
             </form>
@@ -58,7 +58,7 @@
         $modele = $conn->real_escape_string($_POST['modele']);
         $id_categorie = $_POST['id_categorie'];
         $image = $_FILES['image']['name'];
-        $target = "images/" . basename($image);
+        $target = "image/" . basename($image);
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
             $sql = "INSERT INTO voitures (immatriculation, marque, modele, id_categorie, image)

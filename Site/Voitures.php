@@ -38,7 +38,7 @@
                         <th>Modèle</th>
                         <th>Catégorie</th>
                         <th>Image de la voiture</th>
-                        <th>Disponibilité</th>  
+                        <th>Disponible</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +49,7 @@
             
     
                         <?php
-                        $sql = "SELECT v.immatriculation, v.marque, v.modele, c.categorie, v.image
+                        $sql = "SELECT v.immatriculation, v.marque, v.modele, c.categorie, v.image, v.disponible
                         FROM voitures v
                         JOIN categories c ON v.id_categorie = c.id_categorie";
                 $result = $conn->query($sql);
@@ -61,11 +61,8 @@
                                 <td>{$row['marque']}</td>
                                 <td>{$row['modele']}</td>
                                 <td>{$row['categorie']}</td>
-                                <td><img src='images/{$row['image']}' alt='Image de la voiture' width='100' class='clickable'></td>
-                                <td>
-                                    <a href='modifier_voiture.php?id={$row['immatriculation']}'>Modifier</a>
-                                    <a href='supprimer_voiture.php?id={$row['immatriculation']}'>Supprimer</a>
-                                </td>
+                                <td><img src='image/{$row['image']}' alt='Image de la voiture' width='200' class='car-image'></td>
+                                <td>{$row['disponible']}</td>
                               </tr>";
                     }
                 } else {
