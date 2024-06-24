@@ -43,12 +43,18 @@
                     </thead>
                     <tbody>
                     <div class="actions">
+<<<<<<< HEAD
                         <button class="action-btn" onclick="window.location.href='ajouter_clients.php'">Ajouter</button>
+=======
+                        <button class="action-btn" onclick="window.location.href='ajouter_client.php'">Ajouter</button>
+>>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
                         <button class="action-btn" onclick="window.location.href='modifier_client.php'">Modifier</button>
                         <button class="action-btn" onclick="window.location.href='supp_client.php'">Supprimer</button>
             
                         <?php
-                        $sql = "SELECT * FROM clients";
+                        $sql = "SELECT c.id_client, c.nom, c.prenom, c.adresse, t.type_client
+                        FROM clients c
+                        JOIN typesclient t ON c.id_type_client = t.id_type_client";
                         $result = $conn->query($sql);
                  
                         if ($result->num_rows > 0) {
@@ -58,10 +64,9 @@
                 <td>{$row['nom']}</td>
                 <td>{$row['prenom']}</td>
                 <td>{$row['adresse']}</td>
-                <td><img src='images/{$row['photo']}' alt='Photo du client' width='100' class='clickable'></td>
+                <td>{$row['type_client']}</td>
                 <td>
-                <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
-                <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
+                
                 </td>
                 </tr>";
                             }

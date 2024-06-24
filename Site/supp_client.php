@@ -25,7 +25,11 @@
                 
                 <div class="form-actions">
                     <button type="submit" name="submit" class="action-btn">Supprimer</button>
+<<<<<<< HEAD
                     <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Locations.php'">Annuler</button>
+=======
+                    <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Clients.php'">Annuler</button>
+>>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
                 </div>
             </form>
         </div>
