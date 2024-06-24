@@ -35,11 +35,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $immatriculation = $conn->real_escape_string($_POST['immatriculation']);
         
-        // Delete the car from the database
         $sql = "DELETE FROM voitures WHERE immatriculation = '$immatriculation'";
         
         if ($conn->query($sql) === TRUE) {
             echo "<p>Voiture supprimée avec succès</p>";
+            header("Location: location.php"); // Redirection vers la page location
+            exit();
         } else {
             echo "<p>Erreur: " . $conn->error . "</p>";
         }
