@@ -16,7 +16,7 @@
     <div class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <form class="rental-form" action="ajouter_client.php" method="post" enctype="multipart/form-data">
+            <form class="rental-form" action="ajouter_clients.php" method="post" enctype="multipart/form-data">
                 <h1>Formulaire de gestion des clients</h1>
                 <label for="nom">Nom:</label>
                 <input type="text" id="nom" name="nom" required>
@@ -44,7 +44,7 @@
                 
                 <div class="form-actions">
                     <button type="submit" name="submit" class="action-btn">Enregistrer</button>
-                    <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Locations.php'">Annuler</button>
+                    <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Clients.php'">Annuler</button>
                 </div>
             </form>
         </div>

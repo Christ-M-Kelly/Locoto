@@ -4,13 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Liste des Voitures - Locoto</title>
-    <link rel="stylesheet" href="Clients.css"> 
-=======
     <title>Gestion des Locations - Locoto</title>
     <link rel="stylesheet" href="Location.css"> 
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
+
 </head>
 <body>
     <header>
@@ -20,11 +16,7 @@
                 <ul>
                     <li><a href="Page_d'accueil.php">Accueil</a></li>
                     <li><a href="Voitures.php">Voitures</a></li>
-<<<<<<< HEAD
-                    <li><a href="Locations.php">Locations</a></li>
-=======
                     <li><a href="Clients.php">Clients</a></li>
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
                     <li><a href="Connexion.php">Connexion</a></li>
                 </ul>
             </nav>
@@ -34,7 +26,7 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Clients de l'agence</h1> 
+                <h1>Gestion des Locations</h1> 
              </div>
          </section>
 
@@ -49,42 +41,6 @@
                 <table>
                     <thead>
                         <tr>
-<<<<<<< HEAD
-                            <th>ID</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Adresse</th>
-                            <th>Type de Clients</th>
-                            <th>Contrat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <div class="actions">
-                        <button class="action-btn" onclick="window.location.href='ajouter_location.php'">Ajouter</button>
-                        <button class="action-btn" onclick="window.location.href='modifier_loc.php'">Modifier</button>
-                        <button class="action-btn" onclick="window.location.href='supp_loc.php'">Supprimer</button>
-            
-                        <?php
-                        $sql = "SELECT * FROM clients";
-                        $result = $conn->query($sql);
-                 
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>
-                <td>{$row['id_client']}</td>
-                <td>{$row['nom']}</td>
-                <td>{$row['prenom']}</td>
-                <td>{$row['adresse']}</td>
-                <td><img src='images/{$row['photo']}' alt='Photo du client' width='100' class='clickable'></td>
-                <td>
-                <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
-                <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
-                </td>
-                </tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='6'>Aucun client trouvé</td></tr>";
-=======
                             <th></th> 
                             <th>ID</th>
                             <th>Nom du client</th>
@@ -130,20 +86,19 @@
                             }
                         } else {
                             echo "<tr><td colspan='7'>Aucune location trouvée</td></tr>";
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
+
                         }
                         ?>
                     </tbody>
                 </table>
-<<<<<<< HEAD
-            </div>
-=======
+
+
                 <div class="form-actions" id="formActions" style="display: none;">
                     <button type="submit" class="action-btn">Confirmer</button>
                     <button type="button" class="action-btn cancel-btn" onclick="toggleCheckboxes()">Annuler</button>
                 </div>
             </form>
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
+
         </section>
     </main>
 

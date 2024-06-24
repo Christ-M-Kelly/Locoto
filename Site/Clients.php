@@ -43,11 +43,7 @@
                     </thead>
                     <tbody>
                     <div class="actions">
-<<<<<<< HEAD
                         <button class="action-btn" onclick="window.location.href='ajouter_clients.php'">Ajouter</button>
-=======
-                        <button class="action-btn" onclick="window.location.href='ajouter_client.php'">Ajouter</button>
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
                         <button class="action-btn" onclick="window.location.href='modifier_client.php'">Modifier</button>
                         <button class="action-btn" onclick="window.location.href='supp_client.php'">Supprimer</button>
             

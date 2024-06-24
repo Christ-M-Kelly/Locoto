@@ -25,11 +25,7 @@
                 
                 <div class="form-actions">
                     <button type="submit" name="submit" class="action-btn">Supprimer</button>
-<<<<<<< HEAD
-                    <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Locations.php'">Annuler</button>
-=======
                     <button type="reset" class="action-btn cancel-btn" onclick="window.location.href='Clients.php'">Annuler</button>
->>>>>>> e551cd32a91bdc09c0f09f1ecfdfbc3af19e9027
                 </div>
             </form>
         </div>
@@ -39,7 +35,7 @@
     if (isset($_POST['submit'])) {
         $id_client = $conn->real_escape_string($_POST['id_client']);
 
-        // Delete the client from the database
+        
         $sql = "DELETE FROM clients WHERE id_client = '$id_client'";
 
         if ($conn->query($sql) === TRUE) {
