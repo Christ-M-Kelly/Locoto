@@ -17,7 +17,7 @@
     <div class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <form class="rental-form" action="supprimer_voiture.php" method="post">
+            <form class="rental-form" action="supp_voiture.php" method="post">
                 <h1>Formulaire de suppression de Voiture</h1>
                 
                 <label for="immatriculation">Immatriculation :</label>
@@ -35,7 +35,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $immatriculation = $conn->real_escape_string($_POST['immatriculation']);
         
-        // Delete the car from the database
+        
         $sql = "DELETE FROM voitures WHERE immatriculation = '$immatriculation'";
         
         if ($conn->query($sql) === TRUE) {
