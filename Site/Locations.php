@@ -56,10 +56,23 @@
                                 JOIN clients c ON l.id_client = c.id_client
                                 JOIN voitures v ON l.immatriculation = v.immatriculation";
                         $result = $conn->query($sql);
-
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                $statut = (new DateTime() > new DateTime($row['date_fin'])) ? 'Terminée' : 'En cours';
+                                $date_debut = new DateTime($row['date_debut']);
+                                $date_fin = new DateTime($row['date_fin']);
+                                $maintenant = new DateTime();
+                        
+                                if ($maintenant > $date_fin) {
+                                    // Location terminée
+                                    $statut = 'Terminée';
+                                } elseif ($maintenant < $date_debut) {
+                                    // Location à venir
+                                    $statut = 'À venir';
+                                } else {
+                                    // Location en cours
+                                    $statut = 'En cours';
+                                }
+                                
                                 echo "<tr>
                                         <td><input type='checkbox' name='selected_locations[]' value='{$row['id_louer']}' class='checkbox'></td>
                                         <td>{$row['id_louer']}</td>

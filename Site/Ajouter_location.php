@@ -71,6 +71,9 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<p>Erreur: " . $conn->error . "</p>";
     }
+
+    echo "<script>window.location.href='Locations.php';</script>";
+    
 }
 ?>
 
