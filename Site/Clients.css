@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #ae602fda; 
+    --primary-color: #7ecfd160; 
     --secondary-color: #ffffff;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-color: #333;
@@ -146,7 +146,7 @@ th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f7f7f7;
+    background-color: #851b1b;
 }
 
 tbody tr:hover {

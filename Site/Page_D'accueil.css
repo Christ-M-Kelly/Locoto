@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #96180ffe;
+    --primary-color: #7ecfd160;
     --secondary-color: #f2f2f2;
     --font-family: Arial, sans-serif;
     --font-color: white;
@@ -87,7 +87,7 @@ header {
 }
 
 footer {
-    background-color: #433e3bc4;
+    background-color: #7ecfd160;
     color: white;
     text-align: center;
     padding: 10px 0;
