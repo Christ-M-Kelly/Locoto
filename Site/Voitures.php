@@ -43,9 +43,9 @@
                     </thead>
                     <tbody>
                     <div class="actions">
-                <button class="action-btn" onclick="window.location.href='Ajouter.php'">Ajouter</button>
-                <button class="action-btn" onclick="window.location.href='modifier.php'">Modifier</button>
-                <button class="action-btn" onclick="window.location.href='supprimer.php'">Supprimer</button>
+                <button class="action-btn" onclick="window.location.href='ajouter_voiture.php'">Ajouter</button>
+                <button class="action-btn" onclick="window.location.href='modifier_voiture.php'">Modifier</button>
+                <button class="action-btn" onclick="window.location.href='supp_voiture.php'">Supprimer</button>
             
     
                         <?php
