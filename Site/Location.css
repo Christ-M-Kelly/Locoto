@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #433e3bda; 
+    --primary-color: #33a09186; 
     --secondary-color: #ffffff;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-color: #333;
     --link-color: #3498db; 
     --link-hover-color: #2980b9; 
-    --border-color: #ccc;
-    --button-bg: #0b9260; 
+    --border-color: white;
+    --button-bg: #2980b9;
     --button-text: white;
-    --button-hover-bg: #2980b9; 
+    --button-hover-bg: #0b9260;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --hero-bg: url('Locations.png') no-repeat center center/cover;
     --hero-overlay: rgba(0, 0, 0, 0.5);
@@ -131,7 +131,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid var(--border-color);
+    border: 10px solid var(--border-color);
 }
 
 th, td {
